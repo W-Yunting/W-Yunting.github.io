@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>上邪</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="javascript基础拾遗知识点1: ==和=== 非严格相等和严格相等 == 比较前将两个被比较的值转化为相同类型。最终进行===全等比较。 知识点二：&amp;amp;&amp;amp;         exp1&amp;amp;&amp;amp;exp2          若exp1可转换为true 则返回exp2; 否则，返回exp1 ||          exp1||exp2           若exp1可转换为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="上邪">
+<meta property="og:url" content="http://yoursite.com/2019/10/11/javascript基础拾遗/index.html">
+<meta property="og:site_name" content="上邪">
+<meta property="og:description" content="javascript基础拾遗知识点1: ==和=== 非严格相等和严格相等 == 比较前将两个被比较的值转化为相同类型。最终进行===全等比较。 知识点二：&amp;amp;&amp;amp;         exp1&amp;amp;&amp;amp;exp2          若exp1可转换为true 则返回exp2; 否则，返回exp1 ||          exp1||exp2           若exp1可转换为">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-11T13:12:30.466Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="上邪">
+<meta name="twitter:description" content="javascript基础拾遗知识点1: ==和=== 非严格相等和严格相等 == 比较前将两个被比较的值转化为相同类型。最终进行===全等比较。 知识点二：&amp;amp;&amp;amp;         exp1&amp;amp;&amp;amp;exp2          若exp1可转换为true 则返回exp2; 否则，返回exp1 ||          exp1||exp2           若exp1可转换为">
+  
+    <link rel="alternate" href="/atom.xml" title="上邪" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">上邪</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-javascript基础拾遗" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/11/javascript基础拾遗/" class="article-date">
+  <time datetime="2019-10-11T01:31:45.260Z" itemprop="datePublished">2019-10-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="javascript基础拾遗"><a href="#javascript基础拾遗" class="headerlink" title="javascript基础拾遗"></a>javascript基础拾遗</h3><h4 id="知识点1-和-非严格相等和严格相等"><a href="#知识点1-和-非严格相等和严格相等" class="headerlink" title="知识点1: ==和=== 非严格相等和严格相等"></a>知识点1: ==和=== 非严格相等和严格相等</h4><p> == 比较前将两个被比较的值转化为相同类型。最终进行===全等比较。</p>
+<h4 id="知识点二："><a href="#知识点二：" class="headerlink" title="知识点二："></a>知识点二：</h4><p>&amp;&amp;         exp1&amp;&amp;exp2          若exp1可转换为true 则返回exp2; 否则，返回exp1</p>
+<p>||          exp1||exp2           若exp1可转换为true 则返回exp21; 否则，返回exp2</p>
+<p>!             !expr                        若expr可转换为true 则返回false; 否则，返回true</p>
+<p>会被转化为false的表达式</p>
+<p>null,</p>
+<p>NaN,</p>
+<p>0，</p>
+<p>空字符串“” 或“  ”</p>
+<p>undefined</p>
+<h4 id="知识点三：原型链（proto-prototype）"><a href="#知识点三：原型链（proto-prototype）" class="headerlink" title="知识点三：原型链（proto    , prototype）"></a>知识点三：原型链（<strong>proto</strong>    , prototype）</h4><p>Prototype  函数对象的属性   当成构造函数定义它的原型对象</p>
+<p><strong>proto</strong>     任意对象的属性    自身构造函数的原型对象</p>
+<p><strong>对象类型</strong>：js提供的内置对象 例如Array,Object…</p>
+<p>​                  宿主对象：window </p>
+<p>​                  自定义对象：自己定义的对象   类。es5之前叫构造函数new()</p>
+<h4 id="知识点四：对象方法检索机制"><a href="#知识点四：对象方法检索机制" class="headerlink" title="知识点四：对象方法检索机制"></a>知识点四：对象方法检索机制</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/11/javascript基础拾遗/" data-id="ck1oon74m0002ap145d145cd1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/13/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/13/hello/">First Night</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/13/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/11/javascript基础拾遗/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 yunting.wang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
