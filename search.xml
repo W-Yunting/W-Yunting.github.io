@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title></title>
+    <url>/2019/10/21/github+hexo+ocean%20%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h1 id="github-hexo-ocean-快速搭建博客"><a href="#github-hexo-ocean-快速搭建博客" class="headerlink" title="github+hexo+ocean 快速搭建博客"></a>github+hexo+ocean 快速搭建博客</h1><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>终于有自己的博客了！作为一名前端开发媛，平时总是喜欢在本子上写写画画，一些流程图、脑图也是自己手写更有感觉。导致笔记和一些重要的东西，不能完整的记录下来。有了博客，以后就在这里更新了。markdown都是自己第一次正式用。下面就开始记录一下这个博客的搭建吧～</p>
+<h5 id="准备工作-mac-环境"><a href="#准备工作-mac-环境" class="headerlink" title="准备工作(mac 环境)"></a>准备工作(mac 环境)</h5><p>假设你们的电脑上已经有了npm, node, git基本操作也没问题。</p>
+<a id="more"></a>
+
+<h4 id="1-安装hexo"><a href="#1-安装hexo" class="headerlink" title="1. 安装hexo"></a>1. 安装hexo</h4><p> 打开终端，输入以下指令</p>
+<p><code>npm install hexo -g</code></p>
+<p>安装完成后，可以执行  <code>hexo -v</code> 查看版本</p>
+<p>然后到任意一个你喜欢的目录下，新建一个文件夹 blog    </p>
+<p>切换到blog目录下，执行<code>hexo init</code></p>
+<p>然后可以看到这样的目录</p>
+<ul>
+<li><p>node_modules：是依赖包</p>
+</li>
+<li><p>public：存放的是生成的页面</p>
+</li>
+<li><p>scaffolds：命令生成文章等的模板</p>
+</li>
+<li><p>source：用命令创建的各种文章</p>
+</li>
+<li><p>themes：主题</p>
+</li>
+<li><p>_config.yml：整个博客的配置</p>
+</li>
+<li><p>db.json：source解析所得到的</p>
+</li>
+<li><p>package.json：项目所需模块项目的配置信息</p>
+</li>
+</ul>
+<h4 id="2-github"><a href="#2-github" class="headerlink" title="2.github"></a>2.github</h4><p>这里我假设你已经有一个github账户</p>
+<p>新建一个repository   取名为xxxx.github.io  按照这个规则创建才有用</p>
+<p>回到终端中，配置github账户信息</p>
+<p>创建ssh 终端中输入  <code>ssh-keygen -t rsa -C &quot;youremail&quot;</code></p>
+<p>查看生成的ssh <code>cat id_rsa.pub</code></p>
+<p>复制内容，放到github Setting -&gt; SSH and GPG keys -&gt;new SSH key</p>
+<p>验证是否添加成功 ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
+<h4 id="3-配置blog-运行"><a href="#3-配置blog-运行" class="headerlink" title="3.配置blog 运行"></a>3.配置blog 运行</h4><p>修改blog -&gt; _config.yml文件内的</p>
+<p>如下所示，配上你自己的地址</p>
+<p><code>deploy:
+type: git
+repo: https://github.com/YourgithubName/YourgithubName.github.io.git
+branch: master</code></p>
+<p>回到终端，cd 到新建的blog目录</p>
+<p><code>hexo clean</code></p>
+<p><code>hexo generate</code></p>
+<p><code>hexo server</code></p>
+<p>注：hexo 3.0把服务器独立成个别模块，需要单独安装：<code>npm i hexo-server</code>。</p>
+<ul>
+<li>打开浏览器输入：<code>http://localhost:4000</code></li>
+<li>接着你就可以遇见天使的微笑了~</li>
+</ul>
+<h4 id="4-上传、部署到github"><a href="#4-上传、部署到github" class="headerlink" title="4.上传、部署到github"></a>4.上传、部署到github</h4><p>安装部署，先安装部署服务依赖</p>
+<p><code>npm install hexo-deployer -git --save</code></p>
+<p><code>hexo clean</code></p>
+<p><code>hexo generate</code></p>
+<p><code>hexo deploy</code></p>
+<p>注意⚠️第一次deploy需要输入username和password（git的）</p>
+<h4 id="5-见证奇迹"><a href="#5-见证奇迹" class="headerlink" title="5.见证奇迹"></a>5.见证奇迹</h4><p>在浏览器中输入<a href="https://yougithunname.github.io" target="_blank" rel="noopener">https://yougithunname.github.io</a> （repo的名字）就可以看到你的博客啦</p>
+<h4 id="6-修改主题"><a href="#6-修改主题" class="headerlink" title="6.修改主题"></a>6.修改主题</h4><p>hexo默认主题landscape ,觉得不喜欢，可以去百度一搜一大把好看的主题。我这个话说找了好久，心水～～</p>
+<p>跟主题相关的配置都在blog/themes 这个文件夹下</p>
+<h4 id="7-写一篇文章发布吧"><a href="#7-写一篇文章发布吧" class="headerlink" title="7.写一篇文章发布吧"></a>7.写一篇文章发布吧</h4><p>其实很简单，每一篇博客都是单独的一个文件，推荐markdown 格式。所见即所得</p>
+<p>新建文章：hexo new 文章名。这个文件是放在 blog/source/_posts路径下的，编辑完文件保存然后执行4的操作部署，就可以在浏览器看到你的文章啦</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>会坚持写博客的！会陆续研究统计，相册，配乐之类的内容，静待更新吧！</p>
+]]></content>
+  </entry>
+</search>

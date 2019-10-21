@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    
+    上邪</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+  <!-- <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("Cirh9OyzJLKMMq9RNThKaiAA-gzGzoHsz", "blnHQ35jvRhUS6eJMJmAT3Fc");</script> -->
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  
+
+<article id="post-github+hexo+ocean 快速搭建博客" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  <div class="article-inner">
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/10/21/github+hexo+ocean 快速搭建博客/" class="article-date">
+  <time datetime="2019-10-21T13:35:49.302Z" itemprop="datePublished">2019-10-21</time>
+</a>
+        
+      </div>
+    
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <h1 id="github-hexo-ocean-快速搭建博客"><a href="#github-hexo-ocean-快速搭建博客" class="headerlink" title="github+hexo+ocean 快速搭建博客"></a>github+hexo+ocean 快速搭建博客</h1><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>终于有自己的博客了！作为一名前端开发媛，平时总是喜欢在本子上写写画画，一些流程图、脑图也是自己手写更有感觉。导致笔记和一些重要的东西，不能完整的记录下来。有了博客，以后就在这里更新了。markdown都是自己第一次正式用。下面就开始记录一下这个博客的搭建吧～</p>
+<h5 id="准备工作-mac-环境"><a href="#准备工作-mac-环境" class="headerlink" title="准备工作(mac 环境)"></a>准备工作(mac 环境)</h5><p>假设你们的电脑上已经有了npm, node, git基本操作也没问题。</p>
+<a id="more"></a>
+
+<h4 id="1-安装hexo"><a href="#1-安装hexo" class="headerlink" title="1. 安装hexo"></a>1. 安装hexo</h4><p> 打开终端，输入以下指令</p>
+<p><code>npm install hexo -g</code></p>
+<p>安装完成后，可以执行  <code>hexo -v</code> 查看版本</p>
+<p>然后到任意一个你喜欢的目录下，新建一个文件夹 blog    </p>
+<p>切换到blog目录下，执行<code>hexo init</code></p>
+<p>然后可以看到这样的目录</p>
+<ul>
+<li><p>node_modules：是依赖包</p>
+</li>
+<li><p>public：存放的是生成的页面</p>
+</li>
+<li><p>scaffolds：命令生成文章等的模板</p>
+</li>
+<li><p>source：用命令创建的各种文章</p>
+</li>
+<li><p>themes：主题</p>
+</li>
+<li><p>_config.yml：整个博客的配置</p>
+</li>
+<li><p>db.json：source解析所得到的</p>
+</li>
+<li><p>package.json：项目所需模块项目的配置信息</p>
+</li>
+</ul>
+<h4 id="2-github"><a href="#2-github" class="headerlink" title="2.github"></a>2.github</h4><p>这里我假设你已经有一个github账户</p>
+<p>新建一个repository   取名为xxxx.github.io  按照这个规则创建才有用</p>
+<p>回到终端中，配置github账户信息</p>
+<p>创建ssh 终端中输入  <code>ssh-keygen -t rsa -C &quot;youremail&quot;</code></p>
+<p>查看生成的ssh <code>cat id_rsa.pub</code></p>
+<p>复制内容，放到github Setting -&gt; SSH and GPG keys -&gt;new SSH key</p>
+<p>验证是否添加成功 ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
+<h4 id="3-配置blog-运行"><a href="#3-配置blog-运行" class="headerlink" title="3.配置blog 运行"></a>3.配置blog 运行</h4><p>修改blog -&gt; _config.yml文件内的</p>
+<p>如下所示，配上你自己的地址</p>
+<p><code>deploy:
+type: git
+repo: https://github.com/YourgithubName/YourgithubName.github.io.git
+branch: master</code></p>
+<p>回到终端，cd 到新建的blog目录</p>
+<p><code>hexo clean</code></p>
+<p><code>hexo generate</code></p>
+<p><code>hexo server</code></p>
+<p>注：hexo 3.0把服务器独立成个别模块，需要单独安装：<code>npm i hexo-server</code>。</p>
+<ul>
+<li>打开浏览器输入：<code>http://localhost:4000</code></li>
+<li>接着你就可以遇见天使的微笑了~</li>
+</ul>
+<h4 id="4-上传、部署到github"><a href="#4-上传、部署到github" class="headerlink" title="4.上传、部署到github"></a>4.上传、部署到github</h4><p>安装部署，先安装部署服务依赖</p>
+<p><code>npm install hexo-deployer -git --save</code></p>
+<p><code>hexo clean</code></p>
+<p><code>hexo generate</code></p>
+<p><code>hexo deploy</code></p>
+<p>注意⚠️第一次deploy需要输入username和password（git的）</p>
+<h4 id="5-见证奇迹"><a href="#5-见证奇迹" class="headerlink" title="5.见证奇迹"></a>5.见证奇迹</h4><p>在浏览器中输入<a href="https://yougithunname.github.io" target="_blank" rel="noopener">https://yougithunname.github.io</a> （repo的名字）就可以看到你的博客啦</p>
+<h4 id="6-修改主题"><a href="#6-修改主题" class="headerlink" title="6.修改主题"></a>6.修改主题</h4><p>hexo默认主题landscape ,觉得不喜欢，可以去百度一搜一大把好看的主题。我这个话说找了好久，心水～～</p>
+<p>跟主题相关的配置都在blog/themes 这个文件夹下</p>
+<h4 id="7-写一篇文章发布吧"><a href="#7-写一篇文章发布吧" class="headerlink" title="7.写一篇文章发布吧"></a>7.写一篇文章发布吧</h4><p>其实很简单，每一篇博客都是单独的一个文件，推荐markdown 格式。所见即所得</p>
+<p>新建文章：hexo new 文章名。这个文件是放在 blog/source/_posts路径下的，编辑完文件保存然后执行4的操作部署，就可以在浏览器看到你的文章啦</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>会坚持写博客的！会陆续研究统计，相册，配乐之类的内容，静待更新吧！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/21/github+hexo+ocean 快速搭建博客/" data-id="ck20gvtsl0000tn14ilvv7y0j"
+         class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li class="">&copy; 2019 上邪</li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<aside class="sidebar sidebar-specter">
+  
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="上邪"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/tocbot.min.js"></script>
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+<script src="/js/ocean.js"></script>
+<!--
+//page counter part
+<script>
+  function addCount (Counter) {
+          url=$('.article-date').attr('href').trim();
+      title = $('.article-title').text().trim();
+      var query=new AV.Query(Counter);
+      //use url as unique idnetfication
+      query.equalTo("url",url);
+      query.find({
+          success: function(results){
+              if(results.length>0)
+              {
+                  var counter=results[0];
+                  counter.fetchWhenSave(true); //get recent result
+                  counter.increment("time");
+                  counter.save();
+              }
+              else
+              {
+                  var newcounter=new Counter();
+                  newcounter.set("title",title);
+                  newcounter.set("url",url);
+                  newcounter.set("time",1);
+                  newcounter.save(null,{
+                      success: function(newcounter){
+                         //alert('New object created');
+                    },
+                    error: function(newcounter,error){
+                    alert('Failed to create');
+                    }
+                    });
+            }
+        },
+        error: function(error){
+            //find null is not a error
+            alert('Error:'+error.code+" "+error.message);
+        }
+    });
+}
+$(function(){
+    var Counter=AV.Object.extend("Counter");
+    //only increse visit counting when intering a page
+    if ($('.article-title').length == 1)
+       addCount(Counter);
+    var query=new AV.Query(Counter);
+    query.descending("time");
+    // the sum of popular posts
+    query.limit(10); 
+    query.find({
+        success: function(results){
+                for(var i=0;i<results.length;i++)    
+                {
+                    var counter=results[i];
+                    title=counter.get("title");
+                    url=counter.get("url");
+                    time=counter.get("time");
+                    // add to the popularlist widget
+                    showcontent=title+" ("+time+")";
+                    //notice the "" in href
+                    $('.popularlist').append('<li><a href="'+url+'">'+showcontent+'</a></li>');
+                }
+            },
+        error: function(error){
+            alert("Error:"+error.code+" "+error.message);
+        }
+        }
+    )
+    });
+-->
+
+</body>
+</html>
