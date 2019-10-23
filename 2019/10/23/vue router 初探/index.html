@@ -26,15 +26,15 @@
   <section class="outer">
   
 
-<article id="post-github+hexo+ocean 快速搭建博客" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+<article id="post-vue router 初探" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   
   <div class="article-inner">
     
 
     
       <div class="article-meta">
-        <a href="/2019/10/21/github+hexo+ocean 快速搭建博客/" class="article-date">
-  <time datetime="2019-10-21T13:35:49.302Z" itemprop="datePublished">2019-10-21</time>
+        <a href="/2019/10/23/vue router 初探/" class="article-date">
+  <time datetime="2019-10-23T14:15:01.328Z" itemprop="datePublished">2019-10-23</time>
 </a>
         
       </div>
@@ -57,73 +57,32 @@
       
 
       
-        <h1 id="github-hexo-ocean-快速搭建博客"><a href="#github-hexo-ocean-快速搭建博客" class="headerlink" title="github+hexo+ocean 快速搭建博客"></a>github+hexo+ocean 快速搭建博客</h1><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>终于有自己的博客了！作为一名前端开发媛，平时总是喜欢在本子上写写画画，一些流程图、脑图也是自己手写更有感觉。导致笔记和一些重要的东西，不能完整的记录下来。有了博客，以后就在这里更新了。markdown都是自己第一次正式用。下面就开始记录一下这个博客的搭建吧～</p>
-<h5 id="准备工作-mac-环境"><a href="#准备工作-mac-环境" class="headerlink" title="准备工作(mac 环境)"></a>准备工作(mac 环境)</h5><p>假设你们的电脑上已经有了npm, node, git基本操作也没问题。</p>
+        <h1 id="Vue-Router"><a href="#Vue-Router" class="headerlink" title="Vue Router"></a>Vue Router</h1><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>今天自己打算用vue做一个单车管理后台的项目，使用到了vue-router 一些不改犯的小问题，在这里记录下。</p>
+<h4 id="vue-router做什么"><a href="#vue-router做什么" class="headerlink" title="vue router做什么"></a>vue router做什么</h4><p>通俗些讲，vue router   就是把组件conponment和路由path一一对应起来 ，并且帮助应用实现页面的前进和后退</p>
 <a id="more"></a>
 
-<h4 id="1-安装hexo"><a href="#1-安装hexo" class="headerlink" title="1. 安装hexo"></a>1. 安装hexo</h4><p> 打开终端，输入以下指令</p>
-<p><code>npm install hexo -g</code></p>
-<p>安装完成后，可以执行  <code>hexo -v</code> 查看版本</p>
-<p>然后到任意一个你喜欢的目录下，新建一个文件夹 blog    </p>
-<p>切换到blog目录下，执行<code>hexo init</code></p>
-<p>然后可以看到这样的目录</p>
-<ul>
-<li><p>node_modules：是依赖包</p>
-</li>
-<li><p>public：存放的是生成的页面</p>
-</li>
-<li><p>scaffolds：命令生成文章等的模板</p>
-</li>
-<li><p>source：用命令创建的各种文章</p>
-</li>
-<li><p>themes：主题</p>
-</li>
-<li><p>_config.yml：整个博客的配置</p>
-</li>
-<li><p>db.json：source解析所得到的</p>
-</li>
-<li><p>package.json：项目所需模块项目的配置信息</p>
-</li>
-</ul>
-<h4 id="2-github"><a href="#2-github" class="headerlink" title="2.github"></a>2.github</h4><p>这里我假设你已经有一个github账户</p>
-<p>新建一个repository   取名为xxxx.github.io  按照这个规则创建才有用</p>
-<p>回到终端中，配置github账户信息</p>
-<p>创建ssh 终端中输入  <code>ssh-keygen -t rsa -C &quot;youremail&quot;</code></p>
-<p>查看生成的ssh <code>cat id_rsa.pub</code></p>
-<p>复制内容，放到github Setting -&gt; SSH and GPG keys -&gt;new SSH key</p>
-<p>验证是否添加成功 ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
-<h4 id="3-配置blog-运行"><a href="#3-配置blog-运行" class="headerlink" title="3.配置blog 运行"></a>3.配置blog 运行</h4><p>修改blog -&gt; _config.yml文件内的</p>
-<p>如下所示，配上你自己的地址</p>
-<p><code>deploy:
-type: git
-repo: https://github.com/YourgithubName/YourgithubName.github.io.git
-branch: master</code></p>
-<p>回到终端，cd 到新建的blog目录</p>
-<p><code>hexo clean</code></p>
-<p><code>hexo generate</code></p>
-<p><code>hexo server</code></p>
-<p>注：hexo 3.0把服务器独立成个别模块，需要单独安装：<code>npm i hexo-server</code>。</p>
-<ul>
-<li>打开浏览器输入：<code>http://localhost:4000</code></li>
-<li>接着你就可以遇见天使的微笑了~</li>
-</ul>
-<h4 id="4-上传、部署到github"><a href="#4-上传、部署到github" class="headerlink" title="4.上传、部署到github"></a>4.上传、部署到github</h4><p>安装部署，先安装部署服务依赖</p>
-<p><code>npm install hexo-deployer -git --save</code></p>
-<p><code>hexo clean</code></p>
-<p><code>hexo generate</code></p>
-<p><code>hexo deploy</code></p>
-<p>注意⚠️第一次deploy需要输入username和password（git的）</p>
-<h4 id="5-见证奇迹"><a href="#5-见证奇迹" class="headerlink" title="5.见证奇迹"></a>5.见证奇迹</h4><p>在浏览器中输入<a href="https://yougithunname.github.io" target="_blank" rel="noopener">https://yougithunname.github.io</a> （repo的名字）就可以看到你的博客啦</p>
-<h4 id="6-修改主题"><a href="#6-修改主题" class="headerlink" title="6.修改主题"></a>6.修改主题</h4><p>hexo默认主题landscape ,觉得不喜欢，可以去百度一搜一大把好看的主题。我这个话说找了好久，心水～～</p>
-<p>跟主题相关的配置都在blog/themes 这个文件夹下</p>
-<h4 id="7-写一篇文章发布吧"><a href="#7-写一篇文章发布吧" class="headerlink" title="7.写一篇文章发布吧"></a>7.写一篇文章发布吧</h4><p>其实很简单，每一篇博客都是单独的一个文件，推荐markdown 格式。所见即所得</p>
-<p>新建文章：hexo new 文章名。这个文件是放在 blog/source/_posts路径下的，编辑完文件保存然后执行4的操作部署，就可以在浏览器看到你的文章啦</p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>会坚持写博客的！会陆续研究统计，相册，配乐之类的内容，静待更新吧！</p>
+<h4 id="简洁版使用方法"><a href="#简洁版使用方法" class="headerlink" title="简洁版使用方法"></a>简洁版使用方法</h4><p>1、创建组件（单个页面组件，例如login.vue,，home.vue, 和index.vue这些）</p>
+<p>2、用组件创建route数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> routes = [</span><br><span class="line"></span><br><span class="line">     &#123;<span class="attr">path</span>:<span class="string">'/home'</span>,<span class="attr">component</span>:Home&#125;,</span><br><span class="line"></span><br><span class="line">     &#123;<span class="attr">path</span>:<span class="string">'login'</span>,<span class="attr">component</span>:Login&#125;,</span><br><span class="line"></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p> 3、实例化一个vueRouter对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import Router from &apos;vue-router&apos;;</span><br><span class="line">let router = new Router(&#123;routes&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>4、把router对象配置到vue对象里面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">  router,//添加到new Vue方法里面</span><br><span class="line">  render: h =&gt; h(App),</span><br><span class="line">&#125;).$mount(&apos;#app&apos;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h4><p>全部配置完以后，npm run dev遇到了报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">TypeError: Cannot read property &apos;$createElement&apos; of undefined</span><br><span class="line">    at render (eval at ./node_modules/cache-loader/dist/cjs.js?&#123;&quot;cacheDirectory&quot;:&quot;node_modules/.cache/vue-loader&quot;,&quot;cacheIdentifier&quot;:&quot;28f8696a-vue-loader-template&quot;&#125;!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/cache-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./src/components/Home.vue?vue&amp;type=template&amp;id=8dc7cce2&amp; (app.js:923), &lt;anonymous&gt;:6:16)</span><br><span class="line">    at eval (vue-router.esm.js?8c4f:1903)</span><br><span class="line">    at eval (vue-router.esm.js?8c4f:1930)</span><br><span class="line">    at Array.map (&lt;anonymous&gt;)</span><br><span class="line">    at eval (vue-router.esm.js?8c4f:1930)</span><br><span class="line">    at Array.map (&lt;anonymous&gt;)</span><br><span class="line">    at flatMapComponents (vue-router.esm.js?8c4f:1929)</span><br><span class="line">    at eval (vue-router.esm.js?8c4f:1865)</span><br><span class="line">    at iterator (vue-router.esm.js?8c4f:2120)</span><br><span class="line">    at step (vue-router.esm.js?8c4f:1846)</span><br></pre></td></tr></table></figure>
+
+<p>检查发现是因为component写成了components </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const routes = [</span><br><span class="line">    &#123; path: &apos;/&apos;, redirect: &apos;/home&apos; &#125;,</span><br><span class="line">    &#123; path: &apos;/login&apos;, components: Login &#125;,//此处的components 应改为component</span><br><span class="line">    &#123; path: &apos;/home&apos;, components: Home &#125;//此处的components 应改为component</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>实在是不应该。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/21/github+hexo+ocean 快速搭建博客/" data-id="ck23d6bs300007w144c6htvmt"
+      <a data-url="http://yoursite.com/2019/10/23/vue router 初探/" data-id="ck23d6bs700027w14otuwbkxh"
          class="article-share-link">Share</a>
       
     </footer>
@@ -134,15 +93,11 @@ branch: master</code></p>
     
   <nav class="article-nav">
     
-      <a href="/2019/10/23/vue router 初探/" class="article-nav-link">
-        <strong class="article-nav-caption">Newer posts</strong>
-        <div class="article-nav-title">
-          
-            (no title)
-          
-        </div>
-      </a>
     
+      <a href="/2019/10/21/github+hexo+ocean 快速搭建博客/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title"></div>
+      </a>
     
   </nav>
 
