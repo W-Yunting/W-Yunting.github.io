@@ -26,15 +26,15 @@
   <section class="outer">
   
 
-<article id="post-vue router 初探" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+<article id="post-Vue学习-v-model " class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   
   <div class="article-inner">
     
 
     
       <div class="article-meta">
-        <a href="/2019/10/23/vue router 初探/" class="article-date">
-  <time datetime="2019-10-23T14:15:01.328Z" itemprop="datePublished">2019-10-23</time>
+        <a href="/2019/11/24/Vue学习-v-model /" class="article-date">
+  <time datetime="2019-11-24T13:41:48.015Z" itemprop="datePublished">2019-11-24</time>
 </a>
         
       </div>
@@ -57,32 +57,30 @@
       
 
       
-        <h1 id="Vue-Router"><a href="#Vue-Router" class="headerlink" title="Vue Router"></a>Vue Router</h1><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>今天自己打算用vue做一个单车管理后台的项目，使用到了vue-router 一些不改犯的小问题，在这里记录下。</p>
-<h4 id="vue-router做什么"><a href="#vue-router做什么" class="headerlink" title="vue router做什么"></a>vue router做什么</h4><p>通俗些讲，vue router   就是把组件conponment和路由path一一对应起来 ，并且帮助应用实现页面的前进和后退</p>
-<a id="more"></a>
+        <h2 id="V-model"><a href="#V-model" class="headerlink" title="V-model"></a>V-model</h2><h5 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h5><p>v-model指令可以在表单控件元素上创建双向数据绑定。它会根据控件类型自动选取正确的方法来更新元素 v-model并不关心表单控件初始化所生成的值，它会选择Vue实例数据来作为具体的值。通俗理解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;&quot; v-model=&quot;msg&quot; name=&quot;123&quot; &gt; //value不生效，显示msg</span><br></pre></td></tr></table></figure>
 
-<h4 id="简洁版使用方法"><a href="#简洁版使用方法" class="headerlink" title="简洁版使用方法"></a>简洁版使用方法</h4><p>1、创建组件（单个页面组件，例如login.vue,，home.vue, 和index.vue这些）</p>
-<p>2、用组件创建route数组</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> routes = [</span><br><span class="line"></span><br><span class="line">     &#123;<span class="attr">path</span>:<span class="string">'/home'</span>,<span class="attr">component</span>:Home&#125;,</span><br><span class="line"></span><br><span class="line">     &#123;<span class="attr">path</span>:<span class="string">'login'</span>,<span class="attr">component</span>:Login&#125;,</span><br><span class="line"></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h5 id="小练习"><a href="#小练习" class="headerlink" title="小练习"></a>小练习</h5><p>哒哒哒 敲代码的声音，照着文档全都来一遍～～～</p>
+<h5 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h5><p>.lazy </p>
+<p>默认情况下，v-model在input事件中同步输入框的值和数据，但是可以添加一个修饰符lazy,从而转变为change事件中同步 (当input框提交或者失去焦点的时候再同步)</p>
+<p>.number </p>
+<p>如果想自动将用户的输入值转为 Number 类型（如果原值的转换结果为 NaN 则返回原值），可以添加一个修饰符 <code>number</code> 给 <code>v-model</code> 来处理输入值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-model.number=&quot;age&quot; type=&quot;number&quot;&gt;</span><br></pre></td></tr></table></figure>
 
-<p> 3、实例化一个vueRouter对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import Router from &apos;vue-router&apos;;</span><br><span class="line">let router = new Router(&#123;routes&#125;);</span><br></pre></td></tr></table></figure>
+<p>.trim </p>
+<p>如果要自动过滤用户输入的首尾空格，可以添加 <code>trim</code> 修饰符到 <code>v-model</code> 上过滤输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-model.trim=&quot;msg&quot;&gt;</span><br></pre></td></tr></table></figure>
 
-<p>4、把router对象配置到vue对象里面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">  router,//添加到new Vue方法里面</span><br><span class="line">  render: h =&gt; h(App),</span><br><span class="line">&#125;).$mount(&apos;#app&apos;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h4><p>全部配置完以后，npm run dev遇到了报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">TypeError: Cannot read property &apos;$createElement&apos; of undefined</span><br><span class="line">    at render (eval at ./node_modules/cache-loader/dist/cjs.js?&#123;&quot;cacheDirectory&quot;:&quot;node_modules/.cache/vue-loader&quot;,&quot;cacheIdentifier&quot;:&quot;28f8696a-vue-loader-template&quot;&#125;!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/cache-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./src/components/Home.vue?vue&amp;type=template&amp;id=8dc7cce2&amp; (app.js:923), &lt;anonymous&gt;:6:16)</span><br><span class="line">    at eval (vue-router.esm.js?8c4f:1903)</span><br><span class="line">    at eval (vue-router.esm.js?8c4f:1930)</span><br><span class="line">    at Array.map (&lt;anonymous&gt;)</span><br><span class="line">    at eval (vue-router.esm.js?8c4f:1930)</span><br><span class="line">    at Array.map (&lt;anonymous&gt;)</span><br><span class="line">    at flatMapComponents (vue-router.esm.js?8c4f:1929)</span><br><span class="line">    at eval (vue-router.esm.js?8c4f:1865)</span><br><span class="line">    at iterator (vue-router.esm.js?8c4f:2120)</span><br><span class="line">    at step (vue-router.esm.js?8c4f:1846)</span><br></pre></td></tr></table></figure>
-
-<p>检查发现是因为component写成了components </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const routes = [</span><br><span class="line">    &#123; path: &apos;/&apos;, redirect: &apos;/home&apos; &#125;,</span><br><span class="line">    &#123; path: &apos;/login&apos;, components: Login &#125;,//此处的components 应改为component</span><br><span class="line">    &#123; path: &apos;/home&apos;, components: Home &#125;//此处的components 应改为component</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>实在是不应该。</p>
+<p> <a href="https://www.jianshu.com/p/4147d3ed2e60" target="_blank" rel="noopener">看到一篇文章</a>，觉得人家写的很好，学习很多。</p>
+<p>v-model只是vue的语法糖，Vue是单向数据流</p>
+<pre><code>&lt;input v-model=&quot;sth&quot; name=&quot;&quot;&gt;
+&lt;input v-bind:value=&quot;sth&quot; v-on:input = &quot;sth =$event.target.value&quot; name=&quot;&quot;&gt;</code></pre><p>上边两行代码是一个意思。当写下一个v-model指令的时候，其实vue帮我们把sth绑定到当前组件的value上，并且监听input方法，将获取到的输入内容赋值给sth </p>
+<p><strong>给组件添加 v-model 属性时，默认会把 value 作为组件的属性，然后把 ‘input’ 值作为给组件绑定事件时的事件名</strong></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/23/vue router 初探/" data-id="ck3d1xnnb0006rk14j8poajcc"
+      <a data-url="http://yoursite.com/2019/11/24/Vue学习-v-model /" data-id="ck3d1xnn80002rk14fniz2cft"
          class="article-share-link">Share</a>
       
     </footer>
@@ -93,7 +91,7 @@
     
   <nav class="article-nav">
     
-      <a href="/2019/10/24/Vue.js数组对象属性更新/" class="article-nav-link">
+      <a href="/2019/11/24/Vue自定义指令/" class="article-nav-link">
         <strong class="article-nav-caption">Newer posts</strong>
         <div class="article-nav-title">
           
@@ -103,7 +101,7 @@
       </a>
     
     
-      <a href="/2019/10/21/github+hexo+ocean 快速搭建博客/" class="article-nav-link">
+      <a href="/2019/10/31/vue textarea实现快捷键发送/" class="article-nav-link">
         <strong class="article-nav-caption">Olde posts</strong>
         <div class="article-nav-title"></div>
       </a>

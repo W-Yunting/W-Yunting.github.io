@@ -23,43 +23,8 @@
 </html>
 <body>
 <main class="content">
-  <section class="jumbotron">
-  <div class="video">
-    
-      <div class="video-frame">
-        <img src="/images/ocean/overlay-hero.png" alt="Decorative image frame">
-      </div>
-    
-    <div class="video-media">
-      <video playsinline="" autoplay="" loop="" muted="" data-autoplay=""
-             poster="/images/ocean/ocean.png" x5-video-player-type="h5">
-        <source src="/images/ocean/ocean.mp4" type="video/mp4">
-        <source src="/images/ocean/ocean.ogv" type="video/ogg">
-        <source src="/images/ocean/ocean.webm" type="video/webm">
-        <p>Your user agent does not support the HTML5 Video element.</p>
-      </video>
-      <div class="video-overlay"></div>
-    </div>
-    <div class="video-inner text-center text-white">
-      <h1><a href="/">上邪</a></h1>
-      <p></p>
-      <p>不正经程序媛</p>
-    </div>
-    <div class="video-learn-more">
-      <a class="anchor" href="#landingpage"><i class="fe fe-mouse"></i></a>
-    </div>
-  </div>
-</section>
-
-<div id="landingpage">
   <section class="outer">
-  <article class="articles">
-    
-    <h1 class="page-type-title"></h1>
-
-    
-      
-        
+  
 
 <article id="post-Vue自定义指令" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   
@@ -74,6 +39,14 @@
         
       </div>
     
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
 
     
 
@@ -131,285 +104,29 @@ oldVnode:上一个虚拟节点，仅在update和componentUpdated钩子中可用
   </div>
 
   
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/11/24/Vue学习-v-model /" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title"></div>
+      </a>
+    
+  </nav>
 
+
+  
+
+  
+    
   
 
 </article>
 
 
 
-      
-        
-
-<article id="post-Vue学习-v-model " class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-  
-  <div class="article-inner">
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/11/24/Vue学习-v-model /" class="article-date">
-  <time datetime="2019-11-24T13:41:48.015Z" itemprop="datePublished">2019-11-24</time>
-</a>
-        
-      </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-        <h2 id="V-model"><a href="#V-model" class="headerlink" title="V-model"></a>V-model</h2><h5 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h5><p>v-model指令可以在表单控件元素上创建双向数据绑定。它会根据控件类型自动选取正确的方法来更新元素 v-model并不关心表单控件初始化所生成的值，它会选择Vue实例数据来作为具体的值。通俗理解</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;&quot; v-model=&quot;msg&quot; name=&quot;123&quot; &gt; //value不生效，显示msg</span><br></pre></td></tr></table></figure>
-
-<h5 id="小练习"><a href="#小练习" class="headerlink" title="小练习"></a>小练习</h5><p>哒哒哒 敲代码的声音，照着文档全都来一遍～～～</p>
-<h5 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h5><p>.lazy </p>
-<p>默认情况下，v-model在input事件中同步输入框的值和数据，但是可以添加一个修饰符lazy,从而转变为change事件中同步 (当input框提交或者失去焦点的时候再同步)</p>
-<p>.number </p>
-<p>如果想自动将用户的输入值转为 Number 类型（如果原值的转换结果为 NaN 则返回原值），可以添加一个修饰符 <code>number</code> 给 <code>v-model</code> 来处理输入值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-model.number=&quot;age&quot; type=&quot;number&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>.trim </p>
-<p>如果要自动过滤用户输入的首尾空格，可以添加 <code>trim</code> 修饰符到 <code>v-model</code> 上过滤输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-model.trim=&quot;msg&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p> <a href="https://www.jianshu.com/p/4147d3ed2e60" target="_blank" rel="noopener">看到一篇文章</a>，觉得人家写的很好，学习很多。</p>
-<p>v-model只是vue的语法糖，Vue是单向数据流</p>
-<pre><code>&lt;input v-model=&quot;sth&quot; name=&quot;&quot;&gt;
-&lt;input v-bind:value=&quot;sth&quot; v-on:input = &quot;sth =$event.target.value&quot; name=&quot;&quot;&gt;</code></pre><p>上边两行代码是一个意思。当写下一个v-model指令的时候，其实vue帮我们把sth绑定到当前组件的value上，并且监听input方法，将获取到的输入内容赋值给sth </p>
-<p><strong>给组件添加 v-model 属性时，默认会把 value 作为组件的属性，然后把 ‘input’ 值作为给组件绑定事件时的事件名</strong></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/24/Vue学习-v-model /" data-id="ck3d1xnn80002rk14fniz2cft"
-         class="article-share-link">Share</a>
-      
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        
-
-<article id="post-vue textarea实现快捷键发送" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-  
-  <div class="article-inner">
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/10/31/vue textarea实现快捷键发送/" class="article-date">
-  <time datetime="2019-10-31T12:52:41.207Z" itemprop="datePublished">2019-10-31</time>
-</a>
-        
-      </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-        <h2 id="vue-textarea实现快捷键发送"><a href="#vue-textarea实现快捷键发送" class="headerlink" title="vue textarea实现快捷键发送"></a>vue textarea实现快捷键发送</h2><h6 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h6><p>最近在用vue做一个web网站的项目，里面有一个im的实时聊天功能。接入的是极光JMessage WebSDK 。</p>
-<p> web端的聊天，肯定是需要回车发送消息的，方便得很有木有。</p>
-<p>这里参考文档  <a href="https://cn.vuejs.org/v2/guide/events.html" target="_blank" rel="noopener">Vue官网</a></p>
-<h4 id="回车发送"><a href="#回车发送" class="headerlink" title="回车发送"></a>回车发送</h4><p>再监听键盘时间时，vue为我们提供了v-on  在监听键盘事件的时候添加按键修饰符</p>
-        
-          <a class="article-more-link" href="/2019/10/31/vue textarea实现快捷键发送/">Read More...</a>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/vue textarea实现快捷键发送/" data-id="ck3d1xnnc0007rk144yboqii3"
-         class="article-share-link">Share</a>
-      
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        
-
-<article id="post-Vue.js数组对象属性更新" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-  
-  <div class="article-inner">
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/10/24/Vue.js数组对象属性更新/" class="article-date">
-  <time datetime="2019-10-24T14:03:25.989Z" itemprop="datePublished">2019-10-24</time>
-</a>
-        
-      </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-        <h2 id="Vue-js数组对象属性更新"><a href="#Vue-js数组对象属性更新" class="headerlink" title="Vue.js数组对象属性更新"></a>Vue.js数组对象属性更新</h2><h4 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let items =[</span><br><span class="line">    &#123;name:&apos;张三&apos;，age:14&#125;,</span><br><span class="line">    &#123;name:&apos;李四&apos;，age:16&#125;</span><br><span class="line">] </span><br><span class="line">items[0].age = 18;//页面不会更新</span><br><span class="line">items.length = 5;//页面不会更新</span><br></pre></td></tr></table></figure>
-
-<p>这是因为 JavaScript的限制，使vue无法监听到以上方法改变的数组属性的变化。</p>
-<p>为此，vue官方提供了Vue.set(Object/Array，key/inde, obj )方法来设置数组和对象的下一级属性，并且能够正常对此改变作出页面响应。</p>
-        
-          <a class="article-more-link" href="/2019/10/24/Vue.js数组对象属性更新/">Read More...</a>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/24/Vue.js数组对象属性更新/" data-id="ck3d1xnna0004rk14tk86s82k"
-         class="article-share-link">Share</a>
-      
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        
-
-<article id="post-vue router 初探" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-  
-  <div class="article-inner">
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/10/23/vue router 初探/" class="article-date">
-  <time datetime="2019-10-23T14:15:01.328Z" itemprop="datePublished">2019-10-23</time>
-</a>
-        
-      </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-        <h1 id="Vue-Router"><a href="#Vue-Router" class="headerlink" title="Vue Router"></a>Vue Router</h1><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>今天自己打算用vue做一个单车管理后台的项目，使用到了vue-router 一些不改犯的小问题，在这里记录下。</p>
-<h4 id="vue-router做什么"><a href="#vue-router做什么" class="headerlink" title="vue router做什么"></a>vue router做什么</h4><p>通俗些讲，vue router   就是把组件conponment和路由path一一对应起来 ，并且帮助应用实现页面的前进和后退</p>
-        
-          <a class="article-more-link" href="/2019/10/23/vue router 初探/">Read More...</a>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/23/vue router 初探/" data-id="ck3d1xnnb0006rk14j8poajcc"
-         class="article-share-link">Share</a>
-      
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        
-
-<article id="post-github+hexo+ocean 快速搭建博客" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-  
-  <div class="article-inner">
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/10/21/github+hexo+ocean 快速搭建博客/" class="article-date">
-  <time datetime="2019-10-21T13:35:49.302Z" itemprop="datePublished">2019-10-21</time>
-</a>
-        
-      </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-        <h1 id="github-hexo-ocean-快速搭建博客"><a href="#github-hexo-ocean-快速搭建博客" class="headerlink" title="github+hexo+ocean 快速搭建博客"></a>github+hexo+ocean 快速搭建博客</h1><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>终于有自己的博客了！作为一名前端开发媛，平时总是喜欢在本子上写写画画，一些流程图、脑图也是自己手写更有感觉。导致笔记和一些重要的东西，不能完整的记录下来。有了博客，以后就在这里更新了。markdown都是自己第一次正式用。下面就开始记录一下这个博客的搭建吧～</p>
-<h5 id="准备工作-mac-环境"><a href="#准备工作-mac-环境" class="headerlink" title="准备工作(mac 环境)"></a>准备工作(mac 环境)</h5><p>假设你们的电脑上已经有了npm, node, git基本操作也没问题。</p>
-        
-          <a class="article-more-link" href="/2019/10/21/github+hexo+ocean 快速搭建博客/">Read More...</a>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/21/github+hexo+ocean 快速搭建博客/" data-id="ck3d1xnna0005rk142as9rqam"
-         class="article-share-link">Share</a>
-      
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-  </article>
-  
-
-  
 </section>
-</div>
-
   <footer class="footer">
   <div class="outer">
     <div class="float-right">
@@ -427,8 +144,8 @@ oldVnode:上一个虚拟节点，仅在update和componentUpdated钩子中可用
 
 </main>
 
-  <aside class="sidebar">
-    
+<aside class="sidebar sidebar-specter">
+  
     <button class="navbar-toggle"></button>
 <nav class="navbar">
   
@@ -493,6 +210,21 @@ oldVnode:上一个虚拟节点，仅在update和componentUpdated钩子中可用
   <script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
+
+  <script src="/js/tocbot.min.js"></script>
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
 
 
 <script src="/js/ocean.js"></script>
