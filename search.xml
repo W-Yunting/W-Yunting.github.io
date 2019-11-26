@@ -2,9 +2,36 @@
 <search>
   <entry>
     <title></title>
+    <url>/2019/11/26/%E8%AF%AF%E5%88%A0stash%E7%9A%84%E8%A1%A5%E6%95%91%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<h2 id="误删stash的终极方案"><a href="#误删stash的终极方案" class="headerlink" title="误删stash的终极方案"></a>误删stash的终极方案</h2><p>最近由于几个项目同时改 bug的缘故，和stash 格外亲密 。 stash对多分支开发是真的友好，前提是你没误删 ······</p>
+<p>这不，昨天切换分支的时候，不小心把stashB pop 到了A分支上，自己一看懵逼了，倒是手快直接撤销stash暂</p>
+<p>存，然后把A的stash pop出来完成了A分支的开发 。 今天一看bug列表，都是B分支的，切过去改吧，一看stash </p>
+<p>list里面已然没有B的暂存了。将尽一周的心血，没了 。 求助度娘，到下午已经解决完毕，现在记录一下涉及到的</p>
+<p>知识点吧，另外发现，纯人工操作，特别耗时，我人工找回来用了将近三个小时一个一个去show commit_id 。  </p>
+<p>晚上回来整理写了一个bash脚本  。文末自取哦 。。不谢 </p>
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git stash list //确认你的stash列表确实丢掉了你想要stash</span><br><span class="line"></span><br><span class="line">接下来把下面每个命令敲打你的shell里</span><br><span class="line">//显示出所有不可访问的对象，就理解成stash list里看不到的，暂时被放弃引用的。</span><br><span class="line">//这里一般都很多，建议直接输出到文件里，方便查看 使用 git fsck --unreachable &gt; stash.txt </span><br><span class="line">git fsck --unreachable  </span><br><span class="line"></span><br><span class="line">//一个一个的查看哪个是被你误删的stash  &lt;shr&gt;指的是👆列表内的id</span><br><span class="line">在这里需要⚠️ 你只需要关心commit 类型的 blob和tree的是文件和文件夹，</span><br><span class="line">一般无法stash apply 直接略过就好。一条一条的很难找，关键还是没有顺序的</span><br><span class="line">git show &lt;shr&gt;          </span><br><span class="line"></span><br><span class="line">找到你想找到的那条id </span><br><span class="line">git stash apply id  就到你丢失的工作区了 。</span><br></pre></td></tr></table></figure>
+
+<p>脚本</p>
+<p>在你项目目录下新建一个find-stash.sh 文件</p>
+<p>文件内复制以下内容、保存</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># git fsck --unreachable &gt; stash.txt</span><br><span class="line">#!/bin/bash</span><br><span class="line">#将结果输出到stash.txt文件内</span><br><span class="line"># git fsck --unreachable &gt; stash.txt</span><br><span class="line">#从stash.txt文件里逐行读取数据</span><br><span class="line">while read LINE</span><br><span class="line">do</span><br><span class="line">  #按空白符分割当前行字符串，拿到第二个数据，第二个是类型commit 或者blob或者tree</span><br><span class="line">  temp_str=`echo $LINE|cut -d &quot; &quot; -f2`</span><br><span class="line">  if [[ $temp_str = &quot;commit&quot; ]]; then</span><br><span class="line">    #获取到commit_id</span><br><span class="line">    commit_id=`echo $LINE|cut -d &quot; &quot; -f3`</span><br><span class="line">    #把git show 的内容逐条放到commit_result.txt文件内</span><br><span class="line">    git show $commit_id &gt;&gt; commit_result.txt</span><br><span class="line">  fi</span><br><span class="line">done &lt; stash.txt</span><br></pre></td></tr></table></figure>
+
+<p>命令行执行 ./find-stash.sh</p>
+<p>⚠️ 此时可能会提示 permission denied , 切换到系统root用户，执行 chmod 777 find-stash.sh</p>
+<p>之后再 ./find-stash.sh  </p>
+<p>会看到项目文件里多出两个文件  stash.txt 和 commit_result.txt   在commit_result里搜索你要的条件，比如日期Nov 25 就是11月25号的stash，对比diff内容，符合需求 git stash apply commit_id   搞定 </p>
+<p>💗 </p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>/2019/11/24/Vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/</url>
     <content><![CDATA[<h2 id="Vue-自定义指令"><a href="#Vue-自定义指令" class="headerlink" title="Vue 自定义指令"></a>Vue 自定义指令</h2><h5 id="Vue常用内置指令"><a href="#Vue常用内置指令" class="headerlink" title="Vue常用内置指令"></a>Vue常用内置指令</h5><p>v-if：表达式为true 当前标签才会展示到页面上  例如：</p>
 <figure class="highlight plain"><figcaption><span>v-if</span></figcaption><table><tr><td class="code"><pre><span class="line">&lt;loading v-if=&quot;loading&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 <p>v-else： <code>v-else</code> 指令来表示 <code>v-if</code> 的“else 块 必须紧跟在v-if或者v-else-if(2.1.0 新增)元素后面，否则将无法识别</p>
 <figure class="highlight plain"><figcaption><span>v-if</span></figcaption><table><tr><td class="code"><pre><span class="line">&lt;div v-if=&quot;!loading&quot;/&gt;</span><br></pre></td></tr></table></figure>
@@ -45,6 +72,8 @@ oldVnode:上一个虚拟节点，仅在update和componentUpdated钩子中可用
     <url>/2019/11/24/Vue%E5%AD%A6%E4%B9%A0-v-model%20/</url>
     <content><![CDATA[<h2 id="V-model"><a href="#V-model" class="headerlink" title="V-model"></a>V-model</h2><h5 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h5><p>v-model指令可以在表单控件元素上创建双向数据绑定。它会根据控件类型自动选取正确的方法来更新元素 v-model并不关心表单控件初始化所生成的值，它会选择Vue实例数据来作为具体的值。通俗理解</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;input type=&quot;&quot; v-model=&quot;msg&quot; name=&quot;123&quot; &gt; //value不生效，显示msg</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 <h5 id="小练习"><a href="#小练习" class="headerlink" title="小练习"></a>小练习</h5><p>哒哒哒 敲代码的声音，照着文档全都来一遍～～～</p>
 <h5 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h5><p>.lazy </p>
