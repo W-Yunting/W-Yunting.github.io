@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
-    Vue-router 初探 |
+    家常大盘鸡 |
     
     上邪</title>
   
@@ -27,7 +27,7 @@
   <section class="outer">
   
 
-<article id="post-vue router 初探" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+<article id="post-家常大盘鸡" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   
   <div class="article-inner">
     
@@ -35,7 +35,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Vue-router 初探
+      家常大盘鸡
     </h1>
   
   
@@ -48,8 +48,8 @@
 
     
       <div class="article-meta">
-        <a href="/2019/10/23/vue router 初探/" class="article-date">
-  <time datetime="2019-10-23T14:15:01.328Z" itemprop="datePublished">2019-10-23</time>
+        <a href="/2019/12/01/家常大盘鸡/" class="article-date">
+  <time datetime="2019-12-01T07:15:49.681Z" itemprop="datePublished">2019-12-01</time>
 </a>
         
       </div>
@@ -72,32 +72,30 @@
       
 
       
-        <h1 id="Vue-Router"><a href="#Vue-Router" class="headerlink" title="Vue Router"></a>Vue Router</h1><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>今天自己打算用vue做一个单车管理后台的项目，使用到了vue-router 一些不改犯的小问题，在这里记录下。</p>
-<h4 id="vue-router做什么"><a href="#vue-router做什么" class="headerlink" title="vue router做什么"></a>vue router做什么</h4><p>通俗些讲，vue router   就是把组件conponment和路由path一一对应起来 ，并且帮助应用实现页面的前进和后退</p>
-<a id="more"></a>
-
-<h4 id="简洁版使用方法"><a href="#简洁版使用方法" class="headerlink" title="简洁版使用方法"></a>简洁版使用方法</h4><p>1、创建组件（单个页面组件，例如login.vue,，home.vue, 和index.vue这些）</p>
-<p>2、用组件创建route数组</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> routes = [</span><br><span class="line"></span><br><span class="line">     &#123;<span class="attr">path</span>:<span class="string">'/home'</span>,<span class="attr">component</span>:Home&#125;,</span><br><span class="line"></span><br><span class="line">     &#123;<span class="attr">path</span>:<span class="string">'login'</span>,<span class="attr">component</span>:Login&#125;,</span><br><span class="line"></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p> 3、实例化一个vueRouter对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import Router from &apos;vue-router&apos;;</span><br><span class="line">let router = new Router(&#123;routes&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>4、把router对象配置到vue对象里面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">  router,//添加到new Vue方法里面</span><br><span class="line">  render: h =&gt; h(App),</span><br><span class="line">&#125;).$mount(&apos;#app&apos;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h4><p>全部配置完以后，npm run dev遇到了报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">TypeError: Cannot read property &apos;$createElement&apos; of undefined</span><br><span class="line">    at render (eval at ./node_modules/cache-loader/dist/cjs.js?&#123;&quot;cacheDirectory&quot;:&quot;node_modules/.cache/vue-loader&quot;,&quot;cacheIdentifier&quot;:&quot;28f8696a-vue-loader-template&quot;&#125;!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/cache-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./src/components/Home.vue?vue&amp;type=template&amp;id=8dc7cce2&amp; (app.js:923), &lt;anonymous&gt;:6:16)</span><br><span class="line">    at eval (vue-router.esm.js?8c4f:1903)</span><br><span class="line">    at eval (vue-router.esm.js?8c4f:1930)</span><br><span class="line">    at Array.map (&lt;anonymous&gt;)</span><br><span class="line">    at eval (vue-router.esm.js?8c4f:1930)</span><br><span class="line">    at Array.map (&lt;anonymous&gt;)</span><br><span class="line">    at flatMapComponents (vue-router.esm.js?8c4f:1929)</span><br><span class="line">    at eval (vue-router.esm.js?8c4f:1865)</span><br><span class="line">    at iterator (vue-router.esm.js?8c4f:2120)</span><br><span class="line">    at step (vue-router.esm.js?8c4f:1846)</span><br></pre></td></tr></table></figure>
-
-<p>检查发现是因为component写成了components </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const routes = [</span><br><span class="line">    &#123; path: &apos;/&apos;, redirect: &apos;/home&apos; &#125;,</span><br><span class="line">    &#123; path: &apos;/login&apos;, components: Login &#125;,//此处的components 应改为component</span><br><span class="line">    &#123; path: &apos;/home&apos;, components: Home &#125;//此处的components 应改为component</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>实在是不应该。</p>
+        <h4 id="教你在家做大盘鸡"><a href="#教你在家做大盘鸡" class="headerlink" title="教你在家做大盘鸡"></a>教你在家做大盘鸡</h4><a id="more"></a>
+<p>先放图</p>
+<p><img src="//localhost:4000/2019/12/01/家常大盘鸡/BraisedChickenwithPotatoandGreenPepper.jpeg" alt="美食诱惑"></p>
+<h5 id="准备食材"><a href="#准备食材" class="headerlink" title="准备食材"></a>准备食材</h5><p>半只鸡 ，或者两个大鸡腿🍗。</p>
+<p>大土豆一个小土豆两个</p>
+<p>青椒大的一个小的两个</p>
+<p>胡萝卜同上</p>
+<p>洋葱任意，喜欢就多放点，不喜欢可以不放</p>
+<p>大葱</p>
+<p>啤酒一听</p>
+<p>生姜一块</p>
+<p>豆瓣酱、老抽(可有可无)、白糖或者冰糖、十三香、食用油、干辣椒适量</p>
+<h6 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h6><p>烧小半锅水。</p>
+<p>鸡切块，洗干净，可以稍加一点点盐加水浸泡备用。</p>
+<p>土豆、青椒、胡萝卜、洋葱切块备用，土豆用水泡着。</p>
+<p>大葱切段，生姜切片。（可准备干辣椒和蒜瓣儿）</p>
+<p>水开后，倒入洗净的鸡块，放入姜和葱段适量。鸡块焯水，不要煮很久，开锅后大概一两分钟就可以。装盘备用。</p>
+<h4 id="开始烧菜了"><a href="#开始烧菜了" class="headerlink" title="开始烧菜了"></a>开始烧菜了</h4><p>锅中倒入适量油，油热后放入适量白糖，我放了大概7/8块小冰糖，像中指指甲盖那么大的，糖融化后把鸡块放入锅里翻炒至变色，然后加入葱姜蒜干辣椒炒香。再放入一勺豆瓣酱，翻炒均匀，倒入一听啤酒。放入一小勺十三香。过7/8分钟，水开了，放入切好的土豆块。再转小火炖大约20或者15分钟，把土豆块炖软糯。再放入青椒葫芦卜洋葱等配菜，适量调味。在炖5分钟汤汁正好收的差不多。就出锅啦。</p>
+<p>宽面可以买，买不到可以买一些饺子皮，回来了，直接捏着两头，拽成宽面的样子，下水煮熟，放在盘底，然后把做好的大盘鸡浇在上面，嗯嗯嗯····超好吃。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://localhost:4000/2019/10/23/vue router 初探/" data-id="ck3o58d3z0005vv1400ht6l79"
+      <a data-url="http://localhost:4000/2019/12/01/家常大盘鸡/" data-id="ck3o58d4t0007vv14wtws5v95"
          class="article-share-link">Share</a>
       
     </footer>
@@ -108,19 +106,10 @@
     
   <nav class="article-nav">
     
-      <a href="/2019/10/24/Vue.js数组对象属性更新/" class="article-nav-link">
-        <strong class="article-nav-caption">Newer posts</strong>
-        <div class="article-nav-title">
-          
-            Vue.js数组对象属性更新
-          
-        </div>
-      </a>
     
-    
-      <a href="/2019/10/21/github+hexo+ocean 快速搭建博客/" class="article-nav-link">
+      <a href="/2019/12/01/Vue2.0和3.0数据响应原理/" class="article-nav-link">
         <strong class="article-nav-caption">Olde posts</strong>
-        <div class="article-nav-title">github+hexo+ocean 快速搭建博客</div>
+        <div class="article-nav-title">Vue2.0和3.0数据响应原理</div>
       </a>
     
   </nav>

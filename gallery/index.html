@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
-    Vue-router 初探 |
+    gallery |
     
     上邪</title>
   
@@ -27,7 +27,7 @@
   <section class="outer">
   
 
-<article id="post-vue router 初探" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+<article id="gallery-" class="article article-type-gallery" itemscope itemprop="blogPost" data-scroll-reveal>
   
   <div class="article-inner">
     
@@ -35,7 +35,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Vue-router 初探
+      gallery
     </h1>
   
   
@@ -47,57 +47,31 @@
     
 
     
-      <div class="article-meta">
-        <a href="/2019/10/23/vue router 初探/" class="article-date">
-  <time datetime="2019-10-23T14:15:01.328Z" itemprop="datePublished">2019-10-23</time>
-</a>
-        
-      </div>
-    
-
-    
-      
-    <div class="tocbot"></div>
-
-
-
-
 
     
 
     <div class="article-entry" itemprop="articleBody">
       
+  <div class="justified-gallery" id="gallery">
+  
+      <div>
+        <a class="fancybox" data-fancybox="images" data-caption="flowers.jpeg" href="/source/gallery/index/" rel="gallery_ck3o58d680009vv14tr56kipz" title="flowers.jpeg">
+          <img src="/source/gallery/index/" itemprop="image" alt="flowers.jpeg">
+        </a>
+      </div>
+  
+  </div>
+
 
 
       
 
       
-        <h1 id="Vue-Router"><a href="#Vue-Router" class="headerlink" title="Vue Router"></a>Vue Router</h1><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>今天自己打算用vue做一个单车管理后台的项目，使用到了vue-router 一些不改犯的小问题，在这里记录下。</p>
-<h4 id="vue-router做什么"><a href="#vue-router做什么" class="headerlink" title="vue router做什么"></a>vue router做什么</h4><p>通俗些讲，vue router   就是把组件conponment和路由path一一对应起来 ，并且帮助应用实现页面的前进和后退</p>
-<a id="more"></a>
-
-<h4 id="简洁版使用方法"><a href="#简洁版使用方法" class="headerlink" title="简洁版使用方法"></a>简洁版使用方法</h4><p>1、创建组件（单个页面组件，例如login.vue,，home.vue, 和index.vue这些）</p>
-<p>2、用组件创建route数组</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> routes = [</span><br><span class="line"></span><br><span class="line">     &#123;<span class="attr">path</span>:<span class="string">'/home'</span>,<span class="attr">component</span>:Home&#125;,</span><br><span class="line"></span><br><span class="line">     &#123;<span class="attr">path</span>:<span class="string">'login'</span>,<span class="attr">component</span>:Login&#125;,</span><br><span class="line"></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p> 3、实例化一个vueRouter对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import Router from &apos;vue-router&apos;;</span><br><span class="line">let router = new Router(&#123;routes&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>4、把router对象配置到vue对象里面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">  router,//添加到new Vue方法里面</span><br><span class="line">  render: h =&gt; h(App),</span><br><span class="line">&#125;).$mount(&apos;#app&apos;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h4><p>全部配置完以后，npm run dev遇到了报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">TypeError: Cannot read property &apos;$createElement&apos; of undefined</span><br><span class="line">    at render (eval at ./node_modules/cache-loader/dist/cjs.js?&#123;&quot;cacheDirectory&quot;:&quot;node_modules/.cache/vue-loader&quot;,&quot;cacheIdentifier&quot;:&quot;28f8696a-vue-loader-template&quot;&#125;!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/cache-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./src/components/Home.vue?vue&amp;type=template&amp;id=8dc7cce2&amp; (app.js:923), &lt;anonymous&gt;:6:16)</span><br><span class="line">    at eval (vue-router.esm.js?8c4f:1903)</span><br><span class="line">    at eval (vue-router.esm.js?8c4f:1930)</span><br><span class="line">    at Array.map (&lt;anonymous&gt;)</span><br><span class="line">    at eval (vue-router.esm.js?8c4f:1930)</span><br><span class="line">    at Array.map (&lt;anonymous&gt;)</span><br><span class="line">    at flatMapComponents (vue-router.esm.js?8c4f:1929)</span><br><span class="line">    at eval (vue-router.esm.js?8c4f:1865)</span><br><span class="line">    at iterator (vue-router.esm.js?8c4f:2120)</span><br><span class="line">    at step (vue-router.esm.js?8c4f:1846)</span><br></pre></td></tr></table></figure>
-
-<p>检查发现是因为component写成了components </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const routes = [</span><br><span class="line">    &#123; path: &apos;/&apos;, redirect: &apos;/home&apos; &#125;,</span><br><span class="line">    &#123; path: &apos;/login&apos;, components: Login &#125;,//此处的components 应改为component</span><br><span class="line">    &#123; path: &apos;/home&apos;, components: Home &#125;//此处的components 应改为component</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>实在是不应该。</p>
-
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://localhost:4000/2019/10/23/vue router 初探/" data-id="ck3o58d3z0005vv1400ht6l79"
+      <a data-url="http://localhost:4000/gallery/index.html" data-id="ck3o58d680009vv14tr56kipz"
          class="article-share-link">Share</a>
       
     </footer>
@@ -106,49 +80,8 @@
 
   
     
-  <nav class="article-nav">
-    
-      <a href="/2019/10/24/Vue.js数组对象属性更新/" class="article-nav-link">
-        <strong class="article-nav-caption">Newer posts</strong>
-        <div class="article-nav-title">
-          
-            Vue.js数组对象属性更新
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2019/10/21/github+hexo+ocean 快速搭建博客/" class="article-nav-link">
-        <strong class="article-nav-caption">Olde posts</strong>
-        <div class="article-nav-title">github+hexo+ocean 快速搭建博客</div>
-      </a>
-    
-  </nav>
-
 
   
-
-  
-    
-  <div class="gitalk" id="gitalk-container"></div>
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
-  <script type="text/javascript">
-    var gitalk = new Gitalk({
-      clientID: '',
-      clientSecret: '',
-      repo: '',
-      owner: '',
-      admin: [''],
-      // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: md5(location.pathname),
-      distractionFreeMode: false,  // Facebook-like distraction free mode
-      pagerDirection: 'last'
-    })
-
-  gitalk.render('gitalk-container')
-  </script>
 
   
 
@@ -174,8 +107,8 @@
 
 </main>
 
-<aside class="sidebar sidebar-specter">
-  
+  <aside class="sidebar">
+    
     <button class="navbar-toggle"></button>
 <nav class="navbar">
   
@@ -240,21 +173,6 @@
   <script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
-
-  <script src="/js/tocbot.min.js"></script>
-  <script>
-    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
-    tocbot.init({
-      tocSelector: '.tocbot',
-      contentSelector: '.article-entry',
-      headingSelector: 'h1, h2, h3, h4, h5, h6',
-      hasInnerContainers: true,
-      scrollSmooth: true,
-      positionFixedSelector: '.tocbot',
-      positionFixedClass: 'is-position-fixed',
-      fixedSidebarOffset: 'auto',
-    });
-  </script>
 
 
 <script src="/js/ocean.js"></script>
